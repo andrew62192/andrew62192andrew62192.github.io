@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>網頁當機等候</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        h1 {
+            font-size: 3rem;
+        }
+
+        button {
+            font-size: 2rem;
+            padding: 10px;
+            background-color: #6441a5;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 50px;
+        }
+
+        button:hover {
+            background-color: #4d2d9e;
+        }
+    </style>
+</head>
+<body>
+<h1>網頁當機，請稍後再試！</h1>
+<p id="countdown"></p>
+<button onclick="goBack()">返回原網頁</button>
+
+<script>
+    // 設定倒數計時時間（單位：秒）
+    var timeLeft = 5;
+
+    // 取得倒數計時的文字元素
+    var countdownEl = document.getElementById("countdown");
+
+    // 定義倒數計時函數
+    function countdown() {
+        // 更新倒數計時的文字
+        countdownEl.innerHTML = "重新整理將於 " + timeLeft + " 秒後開啟";
+
+        // 如果時間到了，就重新整理頁面
+        if (timeLeft == 0) {
+            window.location.href = "https://www.twitch.tv/";
+        } else {
+            // 否則繼續倒數
+            timeLeft--;
+            setTimeout(countdown, 1000);
+        }
+    }
+
+    // 啟動倒數計時
+    countdown();
+
+    // 定義返回原網頁的函數
+    function goBack() {
+        window.history.back();
+    }
+</script>
+</body>
+</html>
+
